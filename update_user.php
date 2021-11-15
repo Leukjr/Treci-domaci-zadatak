@@ -17,6 +17,9 @@
         $email = $_POST['email'];
         $id = $_POST['id'];
         $country = $_POST['country'];
+        $city = $_POST['city'];
+
+        
 
         $users = getUsersFromFile(); // fetch from "DB"
         
@@ -26,12 +29,13 @@
                 $user['last_name'] = $last_name;
                 $user['email'] = $email;
                 $user['country'] = $country;
+                $user['city'] = $city;
             }
         }
         
         writeToFile(json_encode($users));  // save to "DB"
 
-        
+                
 
         // redirect to index with message
         header("location:index.php?user_updated=1");

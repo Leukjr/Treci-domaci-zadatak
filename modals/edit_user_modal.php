@@ -24,32 +24,31 @@
               </div>
 
               <div class="col-12 mt-3">
-                  <!-- <select name="country" id="countrySelect" onchange="showCityList(1)" class="form-select" aria-label="Default select example"> -->
-                    <!-- <option selected></option> -->
+                  <select name="country" id="countrySelect" onchange="showCityList(1)" class="form-select" aria-label="Default select example">
+                    <option selected id="selectedCountry"></option> 
                       <?php
 
                           $countries = getCountriesFromFile();
 
                           
-                          echo"<select name=\"country\" id=\"countrySelect\" onchange=\"showCityList(1)\" class=\"form-select\" aria-label=\"Default select example\">";
-                          echo"<option selecter></option>";
-                          
                           for($i = 0; $i < count($countries); $i++) {
+                            
 
-                            echo" <option id=\"".$countries[$i]['id']."\"name=\"country\" value=".$countries[$i]['name']." >".$countries[$i]['name']."</option>";
+                            echo" <option id=\"country-".$countries[$i]['id']."\"name=\"country\" value=".$countries[$i]['name']." >".$countries[$i]['name']."</option>";
 
                           }
 
                           /*
                             U countrySelect i citiesSelect treba dinamicno ubaciti value, svaki put kada se change country desi, dodati se novi value.
                           */
-                          echo "</select>"
+                          // echo "</select>"
                       ?>
-                    <!-- </select> -->
+                    </select>
               </div>
 
                 <div class="col-12 mt-3">
-                  <select name="city" id="citiesSelect"class="form-select" aria-label="Default select example">
+                  <select name="city" id="citiesSelect" class="form-select" onchange ="setCityValue(2)" aria-label="Default select example">
+                    
 
 
                   </select>

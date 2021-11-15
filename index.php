@@ -140,6 +140,18 @@
                 document.getElementById("editModalLastName").value = userData.last_name;
                 document.getElementById("editModalEmail").value = userData.email;
                 document.getElementById("editModalId").value = userData.id;
+                               
+
+                if(userData.coutry !== null) {
+                    console.log(userData);
+                    document.getElementById('countrySelect').value = userData.country;
+                }
+
+                if(userData.city !== null) {
+                    document.getElementById('citiesSelect').value = userData.city;
+                }
+
+
             }
             editModal.show();
         }
@@ -147,18 +159,37 @@
         async function showCityList(id) {
             const response = await fetch("http://localhost/uvod-php/api/cities.txt");
             const data = await response.json();
+
+            // const countryResponse = await fetch("http://localhost/uvod-php/api/countries.txt");
+            // const countryData = await countryResponse.json();
+
+            // console.log(countryData);
         
             const citiesId = document.getElementById("citiesSelect");
+            console.log(data);
             
             let html = ""
-            data.forEach(function(city) {
+            data.forEach(function(city, i) {
             
                 if(city.country_id === id) {
-                    html += `<option id="city_${city.id}" name="city" value="${city.name}">${city.name}</option>`
+                    html += `<option id="city-${city.id}" name="city" value="${city.name}">${city.name}</option>`
                 }
                 
             })
             citiesId.innerHTML = html;
+
+            const countryValue = document.getElementById(`country-${id}`).value;
+
+            document.getElementById(`countrySelect`).value = countryValue;
+
+        }
+
+        function setCityValue(id) {
+
+            const cityValue = document.getElementById(`city-${id}`).value;
+
+            document.getElementById('citiesSelect').value = cityValue;
+
         }
         
 

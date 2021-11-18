@@ -141,57 +141,36 @@
                 document.getElementById("editModalEmail").value = userData.email;
                 document.getElementById("editModalId").value = userData.id;
                                
-
-                if(userData.coutry !== null) {
-                    console.log(userData);
-                    document.getElementById('countrySelect').value = userData.country;
-                }
-
-                if(userData.city !== null) {
-                    document.getElementById('citiesSelect').value = userData.city;
-                }
-
-
             }
             editModal.show();
         }
 
-        async function showCityList(id) {
-            const response = await fetch("http://localhost/uvod-php/api/cities.txt");
+        async function showCityList() {
+
+            let countryId = document.getElementById("countrySelect").value;
+
+            const response = await fetch(`http://localhost/uvod-php/api/cities_by_country.php?country_id=${countryId}`);
             const data = await response.json();
 
-            // const countryResponse = await fetch("http://localhost/uvod-php/api/countries.txt");
-            // const countryData = await countryResponse.json();
-
-            // console.log(countryData);
-        
-            const citiesId = document.getElementById("citiesSelect");
-            console.log(data);
+            // const citiesId = document.getElementById("citiesSelect");
+            // console.log(data);
+       
+            // data.forEach(city => {
+            //     let html = `<option id="city-${city.id}" name="city" value="${city.name}">${city.name}</option>`;
+            //     citiesId.insertAdjacentHTML('beforeend', html);
+            // });
             
-            let html = ""
-            data.forEach(function(city, i) {
+            // let html = ""
+            // data.forEach(function(city) {
             
-                if(city.country_id === id) {
-                    html += `<option id="city-${city.id}" name="city" value="${city.name}">${city.name}</option>`
-                }
+            //     if(city.country_id === id) {
+            //         html += `<option id="city-${city.id}" name="city" value="${city.name}">${city.name}</option>`
+            //     }
                 
-            })
-            citiesId.innerHTML = html;
-
-            const countryValue = document.getElementById(`country-${id}`).value;
-
-            document.getElementById(`countrySelect`).value = countryValue;
+            // })
+            // citiesId.innerHTML = html;
 
         }
-
-        function setCityValue(id) {
-
-            const cityValue = document.getElementById(`city-${id}`).value;
-
-            document.getElementById('citiesSelect').value = cityValue;
-
-        }
-        
 
     </script>    
 

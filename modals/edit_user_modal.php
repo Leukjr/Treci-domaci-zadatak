@@ -24,8 +24,8 @@
               </div>
 
               <div class="col-12 mt-3">
-                  <select name="country" id="countrySelect" onchange="showCityList(1)" class="form-select" aria-label="Default select example">
-                    <option selected id="selectedCountry"></option> 
+                  <select name="country" id="editModalCountrySelect" onchange="showCityList()" class="form-select">
+                    <option>--Odaberite drzavu--</option>
                       <?php
 
                           $countries = getCountriesFromFile();
@@ -33,24 +33,21 @@
                           
                           for($i = 0; $i < count($countries); $i++) {
                             
-
-                            echo" <option id=\"country-".$countries[$i]['id']."\"name=\"country\" value=".$countries[$i]['name']." >".$countries[$i]['name']."</option>";
+                            echo" <option id=\"country-".$countries[$i]['id']."\"name=\"country\" value=".$countries[$i]['id']." >".$countries[$i]['name']."</option>";
 
                           }
 
                           /*
                             U countrySelect i citiesSelect treba dinamicno ubaciti value, svaki put kada se change country desi, dodati se novi value.
                           */
-                          // echo "</select>"
+                          
                       ?>
                     </select>
               </div>
 
                 <div class="col-12 mt-3">
-                  <select name="city" id="citiesSelect" class="form-select" onchange ="setCityValue(2)" aria-label="Default select example">
-                    
-
-
+                  <select name="city" id="editModalCitiesSelect" class="form-select">
+                                      
                   </select>
                 </div>
               

@@ -12,9 +12,15 @@
         return $file_contents == "" ? [] : json_decode($file_contents, true);
     }
 
-    function getCountriesFromFile($filename = "./api/countries.txt"){
+    function getCountriesFromFile($filename = "countries.txt"){
         $file_contents = file_get_contents($filename);
         return json_decode($file_contents, true);
     }
+
+    function getCitiesFromFile($filename = "cities.txt"){
+        $file_contents = file_get_contents($filename);
+        return json_decode($file_contents, true);
+    }
+
 
 ?>
